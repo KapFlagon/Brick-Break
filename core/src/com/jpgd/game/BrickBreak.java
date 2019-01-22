@@ -25,42 +25,45 @@ public class BrickBreak extends Game {
 	Variables
 	 */
 	private SpriteBatch spriteBatch;
+	private OrthographicCamera orthographicCamera;
+	private ExtendViewport extendViewport;
 	private GameAssetManager gameAssetManager;
 	private AudioManager audioManager;
 	private ScoreManager scoreManager;
-	private OrthographicCamera orthographicCamera;
-	private ExtendViewport extendViewport;
 	private Preferences preferences;
 
 	/*
 	Getters
 	 */
+	public SpriteBatch getSpriteBatch() {
+		return spriteBatch;
+	}
 
-    public SpriteBatch getSpriteBatch() {
-        return spriteBatch;
-    }
+	public OrthographicCamera getOrthographicCamera() {
+		return orthographicCamera;
+	}
 
-    public AudioManager getAudioManager() {
-        return audioManager;
-    }
+	public ExtendViewport getExtendViewport() {
+		return extendViewport;
+	}
 
-    public ScoreManager getScoreManager() {
-        return scoreManager;
-    }
+	public GameAssetManager getGameAssetManager() {
+		return gameAssetManager;
+	}
 
-    public OrthographicCamera getOrthographicCamera() {
-        return orthographicCamera;
-    }
+	public AudioManager getAudioManager() {
+		return audioManager;
+	}
 
-    public ExtendViewport getExtendViewport() {
-        return extendViewport;
-    }
+	public ScoreManager getScoreManager() {
+		return scoreManager;
+	}
 
-    public Preferences getPreferences() {
-        return preferences;
-    }
+	public Preferences getPreferences() {
+		return preferences;
+	}
 
-    @Override
+	@Override
 	public void create () {
 		spriteBatch = new SpriteBatch();
 
