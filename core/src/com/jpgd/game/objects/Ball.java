@@ -8,15 +8,23 @@ public class Ball extends Shape {
     /*
     Variables
      */
-    private float radius, boundaryX, boundaryY;
+    private float radius, diameter;
     private boolean isLive;
 
     /*
     Constructors
      */
+    public Ball(ShapeRenderer shapeRenderer, Color color) {
+        super(shapeRenderer, color, 0, 0, 4, 4);
+        radius = getWidth() / 2;
+        diameter = getWidth();
+        this.isLive = false;
+    }
+
     public Ball(ShapeRenderer shapeRenderer, Color color, float posX, float posY, float radius) {
         super(shapeRenderer, color, posX, posY, (radius * 2), (radius * 2));
         this.radius = radius;
+        this.diameter = radius * 2;
         this.isLive = true;
     }
 
@@ -26,14 +34,11 @@ public class Ball extends Shape {
     public float getRadius() {
         return radius;
     }
+    public float getDiameter() {
+        return diameter;
+    }
     public boolean isLive() {
         return isLive;
-    }
-    public float getBoundaryX() {
-        return boundaryX;
-    }
-    public float getBoundaryY() {
-        return boundaryY;
     }
 
     /*
@@ -42,20 +47,13 @@ public class Ball extends Shape {
     public void setRadius(float radius) {
         this.radius = radius;
     }
-
+    public void setDiameter(float diameter) {
+        this.diameter = diameter;
+    }
     public void setLive(boolean live) {
         isLive = live;
     }
-    public void setBoundaryX(float boundaryX) {
-        this.boundaryX = boundaryX;
-    }
-    public void setBoundaryY(float boundaryY) {
-        this.boundaryY = boundaryY;
-    }
-    public void setBoundaries(float boundaryX, float boundaryY) {
-        this.boundaryX = boundaryX;
-        this.boundaryY = boundaryY;
-    }
+
 
     /*
     Other methods

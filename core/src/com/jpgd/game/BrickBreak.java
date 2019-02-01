@@ -68,7 +68,7 @@ public class BrickBreak extends Game {
 		spriteBatch = new SpriteBatch();
 
 		gameAssetManager = new GameAssetManager();
-		gameAssetManager.done();
+		//gameAssetManager.done();
 		audioManager = new AudioManager(gameAssetManager);
 		orthographicCamera = new OrthographicCamera();
 		extendViewport = new ExtendViewport(V_WIDTH, V_HEIGHT, orthographicCamera);

@@ -11,7 +11,7 @@ public abstract class Shape {
     protected ShapeRenderer shapeRenderer;
     protected Color color;
     protected boolean isVisible;
-    protected float posX, posY, width, height;
+    protected float posX, posY, width, height, padding;
 
     /*
     Constructors
@@ -24,6 +24,7 @@ public abstract class Shape {
         this.posY = posY;
         this.width = width;
         this.height = height;
+        this.padding = 0;
     }
 
     /*
@@ -50,6 +51,9 @@ public abstract class Shape {
     public float getHeight() {
         return height;
     }
+    public float getPadding() {
+        return padding;
+    }
 
     /*
     Setters
@@ -74,6 +78,9 @@ public abstract class Shape {
     }
     public void setHeight(float height) {
         this.height = height;
+    }
+    public void setPadding(float padding) {
+        this.padding = padding;
     }
 
     /*
