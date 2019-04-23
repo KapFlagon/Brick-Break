@@ -8,7 +8,7 @@ public class Ball extends Shape {
     /*
     Variables
      */
-    private float radius, diameter;
+    private float radius, diameter, ballSpeed;
     private boolean isLive;
 
     /*
@@ -37,6 +37,9 @@ public class Ball extends Shape {
     public float getDiameter() {
         return diameter;
     }
+    public float getBallSpeed() {
+        return ballSpeed;
+    }
     public boolean isLive() {
         return isLive;
     }
@@ -49,6 +52,9 @@ public class Ball extends Shape {
     }
     public void setDiameter(float diameter) {
         this.diameter = diameter;
+    }
+    public void setBallSpeed(float ballSpeed) {
+        this.ballSpeed = ballSpeed;
     }
     public void setLive(boolean live) {
         isLive = live;

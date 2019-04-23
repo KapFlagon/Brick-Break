@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.jpgd.game.states.PlayState;
 import com.jpgd.game.utilities.AudioManager;
 import com.jpgd.game.utilities.GameAssetManager;
 import com.jpgd.game.utilities.ScoreManager;
@@ -72,12 +73,13 @@ public class BrickBreak extends Game {
 		audioManager = new AudioManager(gameAssetManager);
 		orthographicCamera = new OrthographicCamera();
 		extendViewport = new ExtendViewport(V_WIDTH, V_HEIGHT, orthographicCamera);
+		extendViewport.apply();
 		preferences = Gdx.app.getPreferences("BrickBreakPres");
 		scoreManager = new ScoreManager(this);
 		//scoreManager.loadScoreData();
 
         //readPrefs();
-        //this.setScreen(new StartState(this));
+        this.setScreen(new PlayState(this));
 	}
 
 	@Override
@@ -85,11 +87,11 @@ public class BrickBreak extends Game {
 	    orthographicCamera.update();
 	    spriteBatch.setProjectionMatrix(orthographicCamera.combined);
 	    super.render();
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		spriteBatch.begin();
+		//Gdx.gl.glClearColor(1, 0, 0, 1);
+		//Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		//spriteBatch.begin();
 
-        spriteBatch.end();
+        //spriteBatch.end();
 	}
 	
 	@Override

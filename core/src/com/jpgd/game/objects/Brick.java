@@ -25,6 +25,11 @@ public class Brick extends Shape{
         super(shapeRenderer, color, posX, posY, width, height);
         this.value = value;
     }
+    public Brick(ShapeRenderer shapeRenderer, Color color, int value, float posX, float posY, float width, float height, float padding) {
+        super(shapeRenderer, color, posX, posY, width, height);
+        this.value = value;
+        this.padding = padding;
+    }
 
     /*
     Getters
@@ -60,9 +65,9 @@ public class Brick extends Shape{
 
     public void draw() {
         if(isVisible == true) {
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             shapeRenderer.setColor(color);
-            shapeRenderer.rect(posX, posY, width, height);
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            shapeRenderer.rect(posX + padding, posY + padding, width - (padding * 2), height - (padding));
             shapeRenderer.end();
         } else {
             // Do not draw
