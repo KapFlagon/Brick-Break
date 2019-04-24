@@ -8,6 +8,7 @@ import com.jpgd.game.BrickBreak;
 import com.jpgd.game.objects.Ball;
 import com.jpgd.game.objects.Brick;
 import com.jpgd.game.objects.Paddle;
+import com.jpgd.game.utilities.InputHandler;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class PlayState extends State{
     private int speed;
     private float brickFieldHeight;
     protected ShapeRenderer shapeRenderer;
+    private InputHandler inputHandler;
 
     /*
     Constructor
@@ -38,10 +40,11 @@ public class PlayState extends State{
         resetLives(3);
         initializeBall(10);
         resetBall();
-        initializePaddle(10);
+        initializePaddle(500);
         resetPaddle();
         initializeBricks();
         resetBricks();
+        inputHandler = new InputHandler(paddle, extendViewport);
         //writeBricks();
     }
 
@@ -131,13 +134,19 @@ public class PlayState extends State{
     }
 
     public void update(float delta) {
-
+        paddle.move(delta);
+        if(lives < 0 && ball.isLive()) {
+            //TODO
+            // ball.move();
+        }
     }
 
     public void draw(float delta) {
         for(int i = 0; i < bricks.size(); i++) {
             bricks.get(i).draw();
         }
+        // TODO
+        // ball.draw();
         paddle.draw();
     }
 
@@ -152,12 +161,16 @@ public class PlayState extends State{
         super.render(delta);
         update(delta);
         draw(delta);
-
     }
 
     /*
     Implemented methods from Abstract Class
      */
+    @Override
+    public void show() {
+        Gdx.input.setInputProcessor(inputHandler);
+    }
+
     @Override
     public void pause() {
 
