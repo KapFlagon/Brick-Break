@@ -97,17 +97,14 @@ public class Paddle extends Shape {
             } else {
                 setPosX(getPosX() - (getSpeed() * delta));
             }
-
         } else if(direction == Movement.RIGHT) {
             if((getPosX() + getWidth()) >= BrickBreak.V_WIDTH) {
                 // Too far right, stop moving
             } else {
                 setPosX(getPosX() + (getSpeed() * delta));
             }
-
         } else {
             // Do nothing
         }
-
     }
 }

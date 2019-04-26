@@ -38,10 +38,10 @@ public class PlayState extends State{
         brickFieldHeight = (BrickBreak.V_HEIGHT / 5) * 3;
 
         resetLives(3);
-        initializeBall(10);
-        resetBall();
         initializePaddle(500);
         resetPaddle();
+        initializeBall(10);
+        resetBall();
         initializeBricks();
         resetBricks();
         inputHandler = new InputHandler(paddle, extendViewport);
@@ -54,10 +54,15 @@ public class PlayState extends State{
     public void initializeBall(float ballSpeed) {
         ball = new Ball(shapeRenderer, Color.WHITE);
         ball.setBallSpeed(ballSpeed);
+        ball.setDiameter(25);
     }
 
     public void resetBall() {
         // TODO Set start position of ball, and reset state variables
+        ball.makeBallLive();
+        ball.setVisible(true);
+        ball.setPosX((BrickBreak.V_WIDTH / 2));
+        ball.setPosY(paddle.getPosY() + paddle.getHeight() + ball.getRadius() + 5);
     }
 
     public void initializePaddle(float paddleSpeed) {
@@ -145,8 +150,7 @@ public class PlayState extends State{
         for(int i = 0; i < bricks.size(); i++) {
             bricks.get(i).draw();
         }
-        // TODO
-        // ball.draw();
+        ball.draw();
         paddle.draw();
     }
 

@@ -10,7 +10,7 @@ public class InputHandler extends InputAdapter {
 
     private Paddle paddle;
     private Viewport viewport;
-    private int maxBufferSize;
+    private int maxBufferSize, mouseX;
     private boolean leftDown, rightDown;
 
     public InputHandler(Paddle paddle, Viewport viewport) {
@@ -60,6 +60,23 @@ public class InputHandler extends InputAdapter {
                 paddle.moveLeft(false);
             }
             rightDown = false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        if ((paddle.getPosX() >= 0) && ((paddle.getPosX() + paddle.getWidth()) <= BrickBreak.V_WIDTH)) {
+            // Too far in either direction
+            paddle.setPosX(screenX);
+        }
+        return true;
+    }
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        if ((paddle.getPosX() >= 0) && ((paddle.getPosX() + paddle.getWidth()) <= BrickBreak.V_WIDTH)) {
+            // Too far in either direction
+            paddle.setPosX(screenX);
         }
         return true;
     }
