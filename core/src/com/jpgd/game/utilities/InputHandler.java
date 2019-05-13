@@ -2,6 +2,7 @@ package com.jpgd.game.utilities;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.jpgd.game.BrickBreak;
 import com.jpgd.game.objects.Paddle;
@@ -66,17 +67,25 @@ public class InputHandler extends InputAdapter {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        if ((paddle.getPosX() >= 0) && ((paddle.getPosX() + paddle.getWidth()) <= BrickBreak.V_WIDTH)) {
-            // Too far in either direction
-            paddle.setPosX(screenX);
+        Vector2 projectedCoordinates = viewport.unproject(new Vector2 (screenX, screenY));
+        if(projectedCoordinates.x < 0) {
+            paddle.setPosX(0);
+        } else if((projectedCoordinates.x + paddle.getWidth()) >= BrickBreak.V_WIDTH) {
+            paddle.setPosX(BrickBreak.V_WIDTH - paddle.getWidth());
+        } else {
+            paddle.setPosX(projectedCoordinates.x);
         }
         return true;
     }
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        if ((paddle.getPosX() >= 0) && ((paddle.getPosX() + paddle.getWidth()) <= BrickBreak.V_WIDTH)) {
-            // Too far in either direction
-            paddle.setPosX(screenX);
+        Vector2 projectedCoordinates = viewport.unproject(new Vector2 (screenX, screenY));
+        if(projectedCoordinates.x < 0) {
+            paddle.setPosX(0);
+        } else if((projectedCoordinates.x + paddle.getWidth()) >= BrickBreak.V_WIDTH) {
+            paddle.setPosX(BrickBreak.V_WIDTH - paddle.getWidth());
+        } else {
+            paddle.setPosX(projectedCoordinates.x);
         }
         return true;
     }

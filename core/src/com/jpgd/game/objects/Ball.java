@@ -108,7 +108,7 @@ public class Ball extends Shape {
         if(isVisible && isLive) {
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             shapeRenderer.setColor(color);
-            shapeRenderer.circle(posX, posY, radius);
+            shapeRenderer.circle(position.x, position.y, radius);
             shapeRenderer.end();
         } else {
             // Do not draw
